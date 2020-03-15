@@ -1,0 +1,16 @@
+node 'apps-f.foo.org.nz', 'backups-f.foo.org.nz'{
+	package { 'vim': 
+	ensure => present }
+	include sudo;
+	include ntp_service
+	
+}
+node 'db-f.foo.org.nz' {
+	package { 'vim':
+	ensure => present }
+	package { 'git':
+	ensure => present }
+	include sudo;
+	include ntp_service;
+	include mariadb
+}
